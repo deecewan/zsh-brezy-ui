@@ -48,6 +48,17 @@ while true; do
   esac
 done
 
+# install git-extras
+while true; do
+	read -p "Would you like to install git-extras? " GITEXTRAS
+	case $GITEXTRAS in
+		[Yy]* )
+			brew install git-extras
+			break
+			;;
+		[Nn]* ) break;;
+		* ) echo "Please answer yes or no.";;
+
 #swap to Z shell
 while true; do
   read -p "Would you like to swap your default shell to Z shell? " ZSH
@@ -68,7 +79,7 @@ while true; do
   read -p "Would you like to import some useful run commands into your .zshrc? " RC
   case $RC in
       [Yy]* )
-        ./scripts/import_rcs.sh $OHMYZSH $GITPROMPT
+        ./scripts/import_rcs.sh $OHMYZSH $GITPROMPT $GITEXTRAS
         break;;
       [Nn]* )
         break;;

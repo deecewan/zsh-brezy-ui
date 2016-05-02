@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 touch ~/.zshrc
 
@@ -14,14 +14,20 @@ case $1 in
 	# Oh my zsh path and source
 	export ZSH=~/.oh-my-zsh
 	source \$ZSH/oh-my-zsh.sh
-EOF
+	EOF
     ;;
 esac
+
+if [[ $3 = [Yy]* ]]; then
+	GITEXTRAS=" git-extras"
+else
+	GITEXTRAS=""
+fi
 
 cat <<EOF >> ~/.zshrc
 
 # Current plugins " >> ~/.zshrc
-plugins=(git brew npm bower extract z)
+plugins=(git brew npm bower extract z$GITEXTRAS)
 # Red dots whilst waiting for completion
 COMPLETION_WAITING_DOTS=\"true\"
 # History command. options: \"mm/dd/yyyy\"|\"dd.mm.yyyy\"|\"yyyy-mm-dd\"
